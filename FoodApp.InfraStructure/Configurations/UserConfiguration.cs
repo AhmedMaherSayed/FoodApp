@@ -20,8 +20,7 @@ namespace FoodApp.Application.Configurations
             builder.Property(u => u.Email)
                    .IsRequired()
                    .HasMaxLength(255);
-            builder.Property(u => u.Password)
-                   .IsRequired();
+         
             builder.Property(u => u.Phone)
                    .HasMaxLength(20);
         }
