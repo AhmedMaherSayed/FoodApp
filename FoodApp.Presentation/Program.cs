@@ -9,6 +9,9 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using FoodApp.Domain.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using FoodApp.Presentation.MiddleWare;
+using FoodApp.Application.Repositories;
+using FoodApp.InfraStructure.Repositories;
 namespace FoodApp.Presentation
 {
     public class Program
@@ -51,8 +54,14 @@ namespace FoodApp.Presentation
             });
 
             builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
 
             var app = builder.Build();
+
+
+            app.UseMiddleware<GlobalErrorHandlingMiddleware>();
+            app.UseMiddleware<TransactionMiddleware>();
 
             if (app.Environment.IsDevelopment())
             {
