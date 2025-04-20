@@ -12,6 +12,8 @@ namespace FoodApp.Domain.Data.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public string Steps { get; set; }
+        public string? ImageUrl { get; set; }
+
         public decimal PrepTime { get; set; }
         public decimal CookTime { get; set; }
         public string ImageURL { get; set; }

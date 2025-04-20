@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{CC76EA2D-13F4-4666-84BE-0BD1963C2A70}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodApp.Presentation", "FoodApp.Presentation\FoodApp.Presentation.csproj", "{BC3816F7-183A-4B94-ADCF-7833A4F17CEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodApp.Shared", "FoodApp.Shared\FoodApp.Shared.csproj", "{6164E3BA-C92F-4919-AADD-0164560DCE9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{BC3816F7-183A-4B94-ADCF-7833A4F17CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC3816F7-183A-4B94-ADCF-7833A4F17CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC3816F7-183A-4B94-ADCF-7833A4F17CEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6164E3BA-C92F-4919-AADD-0164560DCE9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6164E3BA-C92F-4919-AADD-0164560DCE9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6164E3BA-C92F-4919-AADD-0164560DCE9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6164E3BA-C92F-4919-AADD-0164560DCE9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
