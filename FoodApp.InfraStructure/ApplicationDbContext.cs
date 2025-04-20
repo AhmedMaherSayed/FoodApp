@@ -1,4 +1,6 @@
-﻿using FoodApp.Domain.Data.Entities;
+﻿using FoodApp.Application.Configurations;
+using FoodApp.Domain.Data.Entities;
+using FoodApp.InfraStructure.Configurations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,18 +14,25 @@ namespace FoodApp.InfraStructure
 {
     public class ApplicationDbContext: DbContext
     {
-        public ApplicationDbContext()
-        {
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<RecipeItem> RecipeItems { get; set; }
+        public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<User> Users { get; set; }
 
-        }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            builder.ApplyConfiguration(new CategoryConfiguration());
+            builder.ApplyConfiguration(new FavoriteConfiguration());
+            builder.ApplyConfiguration(new ItemConfiguration());
+            builder.ApplyConfiguration(new RecipeItemConfiguration());
+            builder.ApplyConfiguration(new RecipeConfiguration());
+            builder.ApplyConfiguration(new UserConfiguration());
         }
-
     }
 }

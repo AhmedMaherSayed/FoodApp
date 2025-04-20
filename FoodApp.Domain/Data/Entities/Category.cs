@@ -8,11 +8,11 @@ namespace FoodApp.Domain.Data.Entities
 {
     public class Category : BaseEntity
     {
-        public string CategoryName { get; set; }
+        public int UserId { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
 
-        public ICollection<FoodItem> FoodItems { get; set; }
-        public ICollection<Recipe> Recipes { get; set; }
-
+        public User User { get; set; }
+        public ICollection<Item> Items { get; set; }
     }
 }

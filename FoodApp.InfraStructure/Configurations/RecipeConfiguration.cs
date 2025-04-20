@@ -1,4 +1,5 @@
 ﻿using FoodApp.Domain.Data.Entities;
+using FoodApp.InfraStructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -9,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace FoodApp.Application.Configurations
 {
-    public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
+    public class RecipeConfiguration : BaseEntityConfiguration<Recipe>
     {
-        public void Configure(EntityTypeBuilder<Recipe> builder)
+        public override void Configure(EntityTypeBuilder<Recipe> builder)
         {
             builder.HasKey(r => r.Id);
 
@@ -22,10 +23,6 @@ namespace FoodApp.Application.Configurations
             builder.HasOne(r => r.User)
                    .WithMany(u => u.Recipes)
                    .HasForeignKey(r => r.UserId);
-
-            builder.HasOne(r => r.Category)
-                   .WithMany(c => c.Recipes)
-                   .HasForeignKey(r => r.CategoryId);
         }
     }
 }

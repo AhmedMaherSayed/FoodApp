@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace FoodApp.Domain.Data.Entities
 {
-    public class Favorite : BaseEntity
+    public class RecipeItem : BaseEntity
     {
-        public int UserId { get; set; }
         public int RecipeId { get; set; }
+        public int ItemId { get; set; }
 
-        public User User { get; set; }
         public Recipe Recipe { get; set; }
+        public Item Item { get; set; }
     }
 }
