@@ -1,6 +1,4 @@
 ﻿using FoodApp.Domain.Data.Entities;
-using FoodApp.InfraStructure.Configurations;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -8,17 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodApp.Application.Configurations
+namespace FoodApp.InfraStructure.Configurations
 {
-    public class CategoryConfiguration : BaseEntityConfiguration<Category>
+    public class ItemConfiguration : BaseEntityConfiguration<Item>
     {
-        public override void Configure(EntityTypeBuilder<Category> builder)
+        public override void Configure(EntityTypeBuilder<Item> builder)
         {
             base.Configure(builder);
 
             builder.HasOne(x => x.User)
-                .WithMany(x => x.Categories)
+                .WithMany(x => x.Items)
                 .HasForeignKey(x => x.UserId);
+
+            builder.HasOne(x => x.Category)
+                .WithMany(x => x.Items)
+                .HasForeignKey(x => x.CategoryId);
         }
     }
 }

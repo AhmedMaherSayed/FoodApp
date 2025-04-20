@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using FoodApp.Presentation.MiddleWare;
 using FoodApp.Application.Repositories;
 using FoodApp.InfraStructure.Repositories;
+using AutoMapper;
+using FoodApp.Presentation.Helpers;
 namespace FoodApp.Presentation
 {
     public class Program
@@ -19,7 +21,10 @@ namespace FoodApp.Presentation
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-         
+
+            builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+
             builder.Services.AddMediatR(cfg =>
                  cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
             // Add services to the container.
@@ -58,6 +63,9 @@ namespace FoodApp.Presentation
 
 
             var app = builder.Build();
+
+
+            AutoMapperHelper.Mapper = app.Services.GetService<IMapper>();
 
 
             app.UseMiddleware<GlobalErrorHandlingMiddleware>();

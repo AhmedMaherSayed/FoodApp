@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodApp.Domain.Data.Enums
+namespace FoodApp.Application.DTOs
 {
-    public enum PaymentStatus
+    public class UpdateRecipeDto:CreateRecipeDto
     {
-        Pending=1,
-        Completed=2,
-        Failed=3
+        public int Id { get; set; }
+
     }
 }
