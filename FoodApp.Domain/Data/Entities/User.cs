@@ -17,5 +17,7 @@ namespace FoodApp.Domain.Data.Entities
         public ICollection<Order> Orders { get; set; }
         public ICollection<Review> Reviews { get; set; }
         public ICollection<Recipe> Recipes { get; set; }
+        public ICollection<Favorite> Favorites { get; set; } = new List<Favorite>();
+
     }
 }
