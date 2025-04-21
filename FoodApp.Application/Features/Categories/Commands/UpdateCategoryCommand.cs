@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodApp.Application.CQRS.Categories.Commands
+namespace FoodApp.Application.Features.Categories.Commands
 {
     public record UpdateCategoryCommand(int categoryId, UpdateCategoryViewModel updateCategory) : IRequest<ResponseViewModel<bool>>;
 
