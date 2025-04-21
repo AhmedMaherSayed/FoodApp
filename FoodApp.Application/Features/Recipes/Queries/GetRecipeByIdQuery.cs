@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodApp.Application.CQRS.Recipes.Queries
+namespace FoodApp.Application.Features.Recipes.Queries
 {
     public record GetRecipeByIdQuery(int Id) : IRequest<ResponseViewModel<RecipeDto>>;
 

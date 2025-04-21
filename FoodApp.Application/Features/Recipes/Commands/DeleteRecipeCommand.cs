@@ -8,17 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodApp.Application.CQRS.Recipes.Commands
+namespace FoodApp.Application.Features.Recipes.Commands
 {
     public record DeleteRecipeCommand(int Id) : IRequest<RecipeDto?>;
 
-    public class DeleteRecipeHandler
-    : IRequestHandler<DeleteRecipeCommand, RecipeDto?>
+    public class DeleteRecipeHandler : IRequestHandler<DeleteRecipeCommand, RecipeDto?>
     {
         private readonly IGenericRepository<Recipe> _repo;
 
-        public DeleteRecipeHandler(IGenericRepository<Recipe> repo)
-            => _repo = repo;
+        public DeleteRecipeHandler(IGenericRepository<Recipe> repo) => _repo = repo;
 
         public async Task<RecipeDto?> Handle(DeleteRecipeCommand req,CancellationToken ct)
         {

@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodApp.Application.CQRS.Recipes.Commands
+namespace FoodApp.Application.Features.Recipes.Commands
 {
     public record UpdateRecipeCommand(UpdateRecipeDto Dto) : IRequest<ResponseViewModel<RecipeDto>>;
 

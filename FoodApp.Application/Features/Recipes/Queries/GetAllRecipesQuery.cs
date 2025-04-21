@@ -11,11 +11,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodApp.Application.CQRS.Recipes.Queries
+namespace FoodApp.Application.Features.Recipes.Queries
 {
     public record GetAllRecipesQuery() : IRequest<ResponseViewModel<List<RecipeDto>>>;
 
-  
     public class GetAllRecipesHandler : IRequestHandler<GetAllRecipesQuery, ResponseViewModel<List<RecipeDto>>>
     {
         private readonly IGenericRepository<Recipe> _recipeRepository;
@@ -34,7 +33,4 @@ namespace FoodApp.Application.CQRS.Recipes.Queries
             return ResponseViewModel<List<RecipeDto>>.Success(recipeDtos);
         }
     }
-
-
-
 }
