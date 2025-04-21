@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using FoodApp.Application.DTOs;
 using FoodApp.Domain.Data.Entities;
+using FoodApp.Shared.DTOs.Recipe;
 
 namespace FoodApp.Presentation.Helpers
 {

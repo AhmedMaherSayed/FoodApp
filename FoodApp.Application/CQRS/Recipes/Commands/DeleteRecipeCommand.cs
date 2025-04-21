@@ -1,6 +1,6 @@
-﻿using FoodApp.Application.DTOs;
-using FoodApp.Application.Repositories;
+﻿using FoodApp.Application.Repositories;
 using FoodApp.Domain.Data.Entities;
+using FoodApp.Shared.DTOs.Recipe;
 using MediatR;
 using System;
 using System.Collections.Generic;

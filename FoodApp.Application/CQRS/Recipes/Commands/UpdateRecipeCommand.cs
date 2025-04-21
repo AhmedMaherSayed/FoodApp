@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using FoodApp.Application.DTOs;
 using FoodApp.Application.Repositories;
 using FoodApp.Domain.Data.Entities;
 using FoodApp.Domain.Data.Enums;
 using FoodApp.Presentation.ViewModel;
+using FoodApp.Shared.DTOs.Recipe;
 using MediatR;
 using System;
 using System.Collections.Generic;

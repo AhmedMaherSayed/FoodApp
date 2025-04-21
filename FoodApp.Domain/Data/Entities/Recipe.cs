@@ -16,7 +16,6 @@ namespace FoodApp.Domain.Data.Entities
 
         public decimal PrepTime { get; set; }
         public decimal CookTime { get; set; }
-        public string ImageURL { get; set; }
 
         public User User { get; set; }
         public ICollection<RecipeItem> Items { get; set; }
