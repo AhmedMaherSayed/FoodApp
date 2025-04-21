@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodApp.Application.DTOs
+namespace FoodApp.Shared.DTOs.Recipe
 {
     public class RecipeDto
     {

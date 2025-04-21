@@ -1,7 +1,8 @@
-﻿using FoodApp.Application.DTOs;
-using FoodApp.Application.Repositories;
+﻿using FoodApp.Application.Repositories;
 using FoodApp.Domain.Data.Entities;
 using FoodApp.Presentation.ViewModel;
+using FoodApp.Shared.DTOs.Recipe;
+
 
 //using FoodApp.Presentation.Helpers;
 using MediatR;
