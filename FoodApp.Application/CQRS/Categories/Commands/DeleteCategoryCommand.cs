@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodApp.Application.Features.Categories.Commands
+namespace FoodApp.Application.CQRS.Categories.Commands
 {
     public record DeleteCategoryCommand(int categoryId) : IRequest<ResponseViewModel<bool>>;
 

@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodApp.Application.Features.Categories.Commands
+namespace FoodApp.Application.CQRS.Categories.Commands
 {
     public record CreateCategoryCommand(CreateCategoryViewModel createCategory) : IRequest<ResponseViewModel<CategoryViewModel>>;
 
@@ -30,7 +30,7 @@ namespace FoodApp.Application.Features.Categories.Commands
                 return ResponseViewModel<CategoryViewModel>.Failure(ErrorCode.BadRequest, "Category data is required.");
             }
 
-            var category = AutoMapperHelper.Map<Category>(request.createCategory);
+            var category = request.createCategory.Map<Category>();
 
             await _categoryRepository.AddAsync(category);
             await _categoryRepository.SaveChangesAsync();

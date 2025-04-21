@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodApp.Application.Features.Categories.Queries
+namespace FoodApp.Application.CQRS.Categories.Queries
 {
     public record GetCategoriesByUserIdQuery(int UserId) : IRequest<ResponseViewModel<List<CategoryViewModel>>>;
 
