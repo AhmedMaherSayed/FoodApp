@@ -13,5 +13,7 @@ namespace FoodApp.Domain.Data.Entities
 
         public Recipe Recipe { get; set; }
         public Item Item { get; set; }
+        public ICollection<Review> Reviews { get; set; }
+
     }
 }

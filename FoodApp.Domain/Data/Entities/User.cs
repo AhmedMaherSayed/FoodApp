@@ -18,6 +18,8 @@ namespace FoodApp.Domain.Data.Entities
         public ICollection<Recipe> Recipes { get; set; }
         public ICollection<Favorite> Favorites { get; set; }
         public ICollection<Menu> Menus { get; set; } = new List<Menu>();
+        public ICollection<Review> Reviews { get; set; }
+
 
     }
 }
