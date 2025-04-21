@@ -1,9 +1,13 @@
 ﻿using AutoMapper;
 using FoodApp.Domain.Data.Entities;
+using FoodApp.Presentation.ViewModel.Recipe;
 using FoodApp.Shared.DTOs.Item;
 using FoodApp.Shared.DTOs.Menu;
 using FoodApp.Shared.DTOs.Recipe;
 using FoodApp.Shared.DTOs.Review;
+using FoodApp.Shared.ViewModel.Item;
+using FoodApp.Shared.ViewModel.Menu;
+using FoodApp.Shared.ViewModel.Review;
 
 namespace FoodApp.Presentation.Helpers
 {
@@ -34,6 +38,24 @@ namespace FoodApp.Presentation.Helpers
 
             CreateMap<CreateReviewDto, Review>().ReverseMap(); 
             CreateMap<Review, ReviewDto>().ReverseMap();
+
+
+            // ViewModels
+            CreateMap<ItemDto, ItemViewModel>().ReverseMap();    
+
+            CreateMap<RecipeDto, RecipeViewModel>().ReverseMap();        
+            CreateMap<RecipeDto, RecipeListViewModel>().ReverseMap();  
+
+            CreateMap<MenuDto, MenuViewModel>().ReverseMap();            
+            CreateMap<MenuDto, MenuDetailViewModel>().ReverseMap();      
+
+            CreateMap<MenuItemDto, ItemForMenuViewModel>().ReverseMap();    
+
+            CreateMap<ReviewDto, ReviewViewModel>().ReverseMap();        
+
+
+
+
 
 
         }
