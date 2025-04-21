@@ -14,8 +14,13 @@ namespace FoodApp.Domain.Data.Entities
         public decimal discount { get; set; }
         public string ImageURL { get; set; }
 
+        public int? MenuId { get; set; }
+        public Menu Menu { get; set; }
+
         public User User { get; set; }
         public Category Category { get; set; }
         public List<RecipeItem> Recipes { get; set; }
     }
 }
+
+
