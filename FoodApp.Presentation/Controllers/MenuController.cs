@@ -1,6 +1,6 @@
 ﻿using FoodApp.Application;
-using FoodApp.Application.CQRS.Menus.Commands;
-using FoodApp.Application.CQRS.Menus.Queries;
+using FoodApp.Application.Features.Menus.Commands;
+using FoodApp.Application.Features.Menus.Queries;
 using FoodApp.Domain.Data.Enums;
 using FoodApp.Presentation.ViewModel;
 using FoodApp.Shared.DTOs.Menu;

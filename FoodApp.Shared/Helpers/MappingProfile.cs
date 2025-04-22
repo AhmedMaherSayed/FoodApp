@@ -8,6 +8,8 @@ using FoodApp.Shared.DTOs.Review;
 using FoodApp.Shared.ViewModel.Item;
 using FoodApp.Shared.ViewModel.Menu;
 using FoodApp.Shared.ViewModel.Review;
+using FoodApp.Shared.ViewModel.Category;
+using FoodApp.Shared.ViewModel.User;
 
 namespace FoodApp.Presentation.Helpers
 {
@@ -58,6 +60,12 @@ namespace FoodApp.Presentation.Helpers
 
 
 
+            CreateMap<Recipe, RecipeDto>();
+
+            CreateMap<User, UserViewModel>().ReverseMap();
+
+            CreateMap<Category, CategoryViewModel>().ReverseMap();
+            CreateMap<Category, CreateCategoryViewModel>().ReverseMap();
         }
 
 

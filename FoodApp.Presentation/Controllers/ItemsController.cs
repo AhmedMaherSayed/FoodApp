@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using FoodApp.Application.CQRS.Items.Commands;
-using FoodApp.Application.CQRS.Items.Queries;
+using FoodApp.Application.Features.Items.Commands;
+using FoodApp.Application.Features.Items.Queries;
 using FoodApp.Domain.Data.Enums;
 using FoodApp.Presentation.ViewModel;
 using FoodApp.Shared.DTOs.Item;

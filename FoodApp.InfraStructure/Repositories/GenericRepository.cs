@@ -1,6 +1,7 @@
 ﻿using FoodApp.Application.Repositories;
 using FoodApp.Domain.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +13,15 @@ namespace FoodApp.InfraStructure.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
+        private readonly ApplicationDbContext _context;
 
-
-        private readonly ApplicationDbContext _dbContext;
-        private readonly DbSet<T> _dbSet;
-
-        public GenericRepository(ApplicationDbContext dbContext)
+        public GenericRepository(ApplicationDbContext context)
         {
-            _dbContext = dbContext;
-            _dbSet = dbContext.Set<T>();
+            _context = context;
         }
 
         public async Task AddAsync(T item)
-            => await _dbSet.AddAsync(item);   
+            => await _context.Set<T>().AddAsync(item);   
 
         public async Task DeleteAsync(int id)
         {
@@ -34,31 +31,45 @@ namespace FoodApp.InfraStructure.Repositories
         }
 
         public IQueryable<T> GetAll()
-            => _dbSet.Where(e => !e.IsDeleted);
+            => _context.Set<T>().Where(e => !e.IsDeleted);
 
         public IQueryable<T> Get(Expression<Func<T, bool>> predicate)
             => GetAll().Where(predicate);
 
         public async Task<T?> GetByIdAsync(int id)
-            => await _dbSet
+            => await _context.Set<T>()
                 .Where(e => !e.IsDeleted && e.Id == id)
                 .FirstOrDefaultAsync();
 
         public async Task<T?> GetByIdWithTrackingAsync(int id)
-            => await _dbSet
+            => await _context.Set<T>()
                 .Where(e => !e.IsDeleted && e.Id == id)
                 .AsTracking()
                 .FirstOrDefaultAsync();
 
-        public void Update(T item)
-            => _dbSet.Update(item);           
+        public async Task UpdateAsync(T entity)
+        {
+            _context.Set<T>().Update(entity);
+            await SaveChangesAsync();
+        }
+
+        public async Task UpdateRangeAsync(IEnumerable<T> entities)
+        {
+            _context.Set<T>().UpdateRange(entities);
+            await SaveChangesAsync();
+        }
+
+        public async Task BulkUpdateAsync(Expression<Func<T, bool>> filter, Expression<Func<SetPropertyCalls<T>, SetPropertyCalls<T>>> updateExpression)
+        {
+            await _context.Set<T>().Where(filter).ExecuteUpdateAsync(updateExpression);
+        }
 
         public void UpdateInclude(T item, params string[] modifiedProperties)
         {
-            var entry = _dbContext.ChangeTracker
+            var entry = _context.ChangeTracker
                 .Entries<T>()
                 .FirstOrDefault(x => x.Entity.Id == item.Id)
-                ?? _dbContext.Entry(item);
+                ?? _context.Entry(item);
 
             foreach (var prop in entry.Properties)
             {
@@ -73,6 +84,48 @@ namespace FoodApp.InfraStructure.Repositories
             }
         }
 
+        public async Task SoftDeleteAsync(T entity)
+        {
+            entity.IsDeleted = true;
+            await UpdateAsync(entity);
+        }
 
+        public async Task SoftDeleteRangeAsync(IEnumerable<T> entities)
+        {
+            foreach (var entity in entities)
+            {
+                entity.IsDeleted = true;
+            }
+            await UpdateRangeAsync(entities);
+        }
+
+        public async Task BulkSoftDeleteAsync(Expression<Func<T, bool>> filter)
+        {
+            await _context.Set<T>()
+                .Where(filter)
+                .ExecuteUpdateAsync(setters => setters.SetProperty(x => x.IsDeleted, true));
+        }
+
+        public async Task HardDeleteAsync(T entity)
+        {
+            _context.Set<T>().Remove(entity);
+            await SaveChangesAsync();
+        }
+
+        public async Task HardDeleteRangeAsync(IEnumerable<T> entities)
+        {
+            _context.Set<T>().RemoveRange(entities);
+            await SaveChangesAsync();
+        }
+
+        public async Task BulkHardDeleteAsync(Expression<Func<T, bool>> filter)
+        {
+            await _context.Set<T>().Where(filter).ExecuteDeleteAsync();
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }

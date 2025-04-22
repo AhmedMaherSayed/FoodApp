@@ -1,6 +1,6 @@
 ﻿using FoodApp.Application;
-using FoodApp.Application.CQRS.Reviews.Commands;
-using FoodApp.Application.CQRS.Reviews.Queries;
+using FoodApp.Application.Features.Reviews.Commands;
+using FoodApp.Application.Features.Reviews.Queries;
 using FoodApp.Presentation.ViewModel;
 using FoodApp.Shared.DTOs.Review;
 using FoodApp.Shared.ViewModel.Review;
